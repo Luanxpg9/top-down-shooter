@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://n7dkowxbmu6p"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_rh084"]
+[ext_resource type="Texture2D" uid="uid://bq4tfjc8ejjrs" path="res://Assets/player.png" id="2_dc3oo"]
+[ext_resource type="AudioStream" uid="uid://de0kb7n8gqi55" path="res://Assets/sounds/shot.wav" id="3_pudca"]
+[ext_resource type="AudioStream" uid="uid://cjojjuriji8qt" path="res://Assets/sounds/rack.wav" id="4_j5378"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghnd1"]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(294, 137)
+script = ExtResource("1_rh084")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ghnd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("2_dc3oo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.4, 1.4)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(187, 0)
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(0.990937, 1)
+stream = ExtResource("3_pudca")
+volume_db = -31.695
+
+[node name="RackSound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(0.990937, 1)
+stream = ExtResource("4_j5378")
+volume_db = -7.879
+
+[node name="TimerFireRate" type="Timer" parent="."]
+wait_time = 0.084
+autostart = true
+
+[node name="SpawnBullet" type="Node2D" parent="."]
+position = Vector2(12, 12)
+
+[connection signal="child_entered_tree" from="RayCast2D" to="." method="_on_ray_cast_2d_child_entered_tree"]
+[connection signal="finished" from="ShotSound" to="." method="_on_shot_sound_finished"]
+[connection signal="finished" from="RackSound" to="." method="_on_rack_sound_finished"]
+[connection signal="timeout" from="TimerFireRate" to="." method="_on_timer_fire_rate_timeout"]

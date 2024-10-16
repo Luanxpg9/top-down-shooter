@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpu5kyqsg32ds"]
+
+[ext_resource type="Texture2D" uid="uid://dpoktmx1k50m8" path="res://Assets/mapa.jpg" id="1_uydsw"]
+[ext_resource type="PackedScene" uid="uid://n7dkowxbmu6p" path="res://Scenes/player.tscn" id="2_c47af"]
+[ext_resource type="PackedScene" uid="uid://c20poj05bxoj6" path="res://box.tscn" id="3_oevlx"]
+
+[node name="World" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(537, 351)
+texture = ExtResource("1_uydsw")
+
+[node name="Player" parent="." instance=ExtResource("2_c47af")]
+
+[node name="Box" parent="." instance=ExtResource("3_oevlx")]
+modulate = Color(0.559523, 1.27546e-06, 3.36915e-07, 1)
