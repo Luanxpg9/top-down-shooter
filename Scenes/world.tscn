@@ -1,16 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpu5kyqsg32ds"]
+[gd_scene load_steps=6 format=3 uid="uid://cpu5kyqsg32ds"]
 
-[ext_resource type="Texture2D" uid="uid://dpoktmx1k50m8" path="res://Assets/mapa.jpg" id="1_uydsw"]
 [ext_resource type="PackedScene" uid="uid://n7dkowxbmu6p" path="res://Scenes/player.tscn" id="2_c47af"]
+[ext_resource type="PackedScene" uid="uid://c7hc5bhtitx5l" path="res://mapa_teste.tscn" id="3_eji16"]
 [ext_resource type="PackedScene" uid="uid://c20poj05bxoj6" path="res://box.tscn" id="3_oevlx"]
+[ext_resource type="AudioStream" uid="uid://cha2bwlj01rhw" path="res://Assets/sounds/hotline.mp3" id="4_hoh60"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vwhjy"]
+polygon = PackedVector2Array(476, 450, 488, 392, 527, 424)
 
 [node name="World" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(537, 351)
-texture = ExtResource("1_uydsw")
-
-[node name="Player" parent="." instance=ExtResource("2_c47af")]
-
 [node name="Box" parent="." instance=ExtResource("3_oevlx")]
 modulate = Color(0.559523, 1.27546e-06, 3.36915e-07, 1)
+
+[node name="mapa_teste" parent="." instance=ExtResource("3_eji16")]
+
+[node name="Player" parent="." instance=ExtResource("2_c47af")]
+position = Vector2(384, 373)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+position = Vector2(5, -23)
+occluder = SubResource("OccluderPolygon2D_vwhjy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hoh60")
+autoplay = true
+bus = &"bg"
