@@ -73,7 +73,7 @@
 [ext_resource type="Texture2D" uid="uid://qu3b6dchxehg" path="res://Assets/icon.svg" id="71_bnmqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghnd1"]
-radius = 23.0868
+radius = 9.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mjdye"]
 animations = [{
@@ -292,7 +292,7 @@ position = Vector2(294, 137)
 script = ExtResource("1_rh084")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6, 0)
+position = Vector2(-5, 2)
 shape = SubResource("CircleShape2D_ghnd1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -325,8 +325,9 @@ texture_scale = 0.4
 [node name="PointLight2DCone" type="PointLight2D" parent="."]
 modulate = Color(0.648958, 0.251706, 0.4441, 0.470588)
 self_modulate = Color(0.670563, 0.000363772, 0.677022, 1)
-position = Vector2(-6.22883, 5.35246)
+position = Vector2(-4.00001, 5.99999)
 rotation = 1.5708
+scale = Vector2(1, 1.00259)
 color = Color(1, 1, 1, 0.427451)
 shadow_enabled = true
 texture = ExtResource("3_ydj07")

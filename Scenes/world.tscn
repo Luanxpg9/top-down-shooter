@@ -16,7 +16,7 @@ modulate = Color(0.559523, 1.27546e-06, 3.36915e-07, 1)
 [node name="mapa_teste" parent="." instance=ExtResource("3_eji16")]
 
 [node name="Player" parent="." instance=ExtResource("2_c47af")]
-position = Vector2(384, 373)
+position = Vector2(172, 53)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
